@@ -1,3 +1,73 @@
+### Deploy An Azure Function with Terraform Guide
+### Alejandro Londoño Bermúdez
+### Software Engineering V
+
+#### Step by step of this guide.
+
+1) Understand the structure of the services to build an azure function.
+
+2) Define services in their first version (without variables).
+
+  Created Resources:
+
+  * Resource Group: Organizes and manages Azure resources.
+
+  * Storage Account: Stores data like blobs, files, and queues, in this case, the windows function app.
+
+  * Service Plan: Defines resource limits and pricing for services.
+
+  * Windows Function App: Runs serverless functions on Windows.
+
+  * Function App Function: Executes code in response to events.
+
+
+
+
+3) Define variables.tf to abstract name references.
+
+4) Define output.tf to capture attributes and values of deployed services.
+
+5) Rebuild services with references of the defined variables.
+
+6) Write terraform.tfvars to initialize non-default variables.
+
+7) Execute terraform commands to deploy in the cloud :)
+
+    **terraform fmt** to format .tf files
+
+    **terraform init** to initialize a Terraform working directory. It installs the necessary provider plugins and sets up the environment to interact with cloud services.
+
+    ![alt text](images/image.png)
+
+    **terraform validate** to validate the configuration files to check for syntax errors or issues in the code before you plan or apply changes.
+
+    ![alt text](images/image-1.png)
+
+    **terraform plan** to create an execution plan, showing what actions Terraform will take to reach the desired state. It allows you to review potential changes and errors before applying them.
+
+    ![alt text](images/image-2.png)
+
+    Correct subscription_id
+
+    ![alt text](images/image-3.png)
+
+    ![alt text](images/image-4.png)
+    
+    **terraform apply** to apply the changes outlined in the execution plan.
+
+    **Evidence of the result:**
+
+    ![alt text](images/image-5.png)
+
+    ![alt text](images/image-6.png)
+
+
+8) **terraform destroy** If you terminate the guide and you want to prevent extra costs, remember destroy the services!
+
+
+
+## Pre-Guide
+
 ### **Infraestructura como código**
 
 - **Utilizar archivos de definición**: Todas las herramientas de infraestructura como código tienen un formato propio para definir la infraestructura.
@@ -144,3 +214,7 @@ Para eliminar la infraestructura creada, se puede utilizar:
 ```bash
 terraform destroy --var-file="dev.tfvars" -auto-approve
 ```
+
+
+
+
